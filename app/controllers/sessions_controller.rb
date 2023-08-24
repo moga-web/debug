@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
+    binding.break
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to posts_path, notice: 'ログインしました'
